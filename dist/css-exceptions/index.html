@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width, initial-scale=1"><meta name=description><meta name=author><link rel=icon href=../favicon.ico><title>CSS Browser Debugging</title><link rel=stylesheet type=text/css href=../css/style.css><meta name=generator content="Gulp 3.9.1"><link rel=alternate type=application/rss+xml title=nonlinear.nyc href=../rss.xml></head><body><div class=container><h1>CSS Browser Debugging</h1><p class=post-meta>January 23rd 2015 by <span>Nicholas Frota</span></p><hr><p>Sometimes you need CSS rules only for a certain browser or operating system to save the day. In this article, I explain a foolproof way to add exception rules precisely, without affecting <em>other</em> browsers or systems.</p><h2 id=step-1-modernizr>Step 1: Modernizr</h2><p><a href=http://modernizr.com>Modernizr</a> scans browser capabilities and reports its findings as classes on <code>html</code> tag.</p><p>For instance, a page using modernizr on a touchscreen browser (cellphone, tablet) reveals <code>touch</code> class on <code>html</code>. The same page, on desktops and notebooks reveals <code>no-touch</code> class instead.</p><p>You can install it with CDN, with <code>&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js&quot;&gt;&lt;/script&gt;</code> or <a href=http://modernizr.com>download and install</a> a local version.</p><h2 id=step-2-detectizr>Step 2: Detectizr</h2><p><a href=https://github.com/barisaydinoglu/Detectizr>Detectizr</a> expands modernizr detection, by revealing browser operating system (<code>mac</code>, <code>android</code>, <code>ios</code>, <code>windows</code>, <code>linux</code>, etc) browser type (<code>safari</code>, <code>chrome</code>, <code>firefox</code>, <code>ie</code>, etc) and even specific versions.</p><p>Install it with CDN with <code>&lt;script src=&quot;https://raw.githubusercontent.com/barisaydinoglu/Detectizr/master/dist/detectizr.js&quot;&gt;&lt;/script&gt;</code> or <a href=https://github.com/barisaydinoglu/Detectizr>download and install</a> local version.</p><p>since detectizr depends on modernizr, it should go <em>after</em> modernizr script.</p><h2 id=step-3-write-your-css-exceptions>Step 3: Write your CSS exceptions</h2><p>Your page is now using javascript for what it does best:</p><ul><li>detection</li><li>right on top of your DOM</li><li>affecting <em>anything</em> below it</li></ul><p>You know where we&#39;re heading, correct? You can now style CSS exceptions freely. For instance,</p><pre><code>.foo {
+  background-color: red;
+}
+html.safari .foo {
+  background-color: blue;
+}
+</code></pre><p>renders any object with <code>foo</code> class as red except if browser is safari, rendering blue instead.</p><p>You can use any of the classes above to differentiate.</p><h2 id=automation-_only_-and-_unless_-mixins>Automation: <em>Only</em> and <em>Unless</em> Mixins</h2><p>We can make the code better, correct? If you use SASS 3.1+, use these mixins</p><pre><code>@mixin only($only) {
+  html.#{$only} &amp; {
+    @content;
+  }
+}
+@mixin unless($unless) {
+  html:not(.#{$unless}) &amp; {
+    @content;
+  }
+}
+</code></pre><p>so you can write exceptions inside the objects, way easier to read:</p><pre><code>.foo {
+  background-color: red;
+  @include only(safari) {
+    background-color: blue;
+  }
+}
+</code></pre><p>You can do the inverse by writing rules for all browsers <em>except</em> the one listed with <code>unless</code>. For instance,</p><pre><code>.foo {
+  @include unless(safari) {
+    display: none;
+  }
+}
+</code></pre><p>hides objects with class <code>foo</code>, <em>unless</em> browser is safari.</p><h2 id=bonus-phase-visibility>Bonus Phase: Visibility</h2><p>Why stop there? We can add visibility rules and show or hide objects at will.</p><pre><code>html:not(.mac) .visible-mac,
+html.mac .hidden-mac,
+html:not(.windows) .visible-windows,
+html.windows .hidden-windows,
+html:not(.linux) .visible-linux,
+html.linux .hidden-linux,
+html:not(.ios) .visible-ios,
+html.ios .hidden-ios,
+html:not(.android) .visible-android,
+html.android .hidden-android,
+html:not(.firefox) .visible-firefox,
+html.firefox .hidden-firefox,
+html:not(.chrome) .visible-chrome,
+html.chrome .hidden-chrome,
+html:not(.ie) .visible-ie,
+html.ie .hidden-ie,
+html:not(.safari) .visible-safari,
+html.safari .hidden-safari,
+html:not(.touch) .visible-touch,
+html.touch .hidden-touch {
+  display: none !important;
+}
+</code></pre><p>Now you can use class <code>visible-</code> or <code>hidden-</code> for any system or browser above.</p><hr><h2 id=conclusion-and-more>Conclusion and More</h2><p>There you have it, powerful and readable exception rules for your CSS. It saved my skin more than once at work.</p><p>This and other CSS lifesavers are in <a href=http://nonlinear.nyc/codecode>codecode</a>, a collection of macros to simplify coding.</p><p>If you use Sublime Text <a href=http://nonlinear.nyc/codecode>make sure to install it</a>, so you have it always at your fingertips.</p></div><script type=text/javascript src=../js/combined.min.js></script></body></html>

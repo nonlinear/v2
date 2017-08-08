@@ -1,13 +1,15 @@
 {
-  "title": "Project Title",
+  "title": "nonlinear.nyc",
   "description": "Project description here Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, repudiandae!",
   "url": "",
   "rss": "/rss.xml",
-  "maxItems": 6,
+  "maxItems": 10,
   "editFolder": "./edit",
   "distFolder": "./dist",
   "concatJs": [
     "./bower_components/jquery/dist/jquery.js",
+    "./bower_components/modernizr/src/Modernizr.js",
+    "./bower_components/detectizr/src/detectizr.js",
     "./bower_components/bootstrap-sass/assets/javascripts/bootstrap.js",
     "./edit/javascripts/*.js"
   ],

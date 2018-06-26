@@ -5,7 +5,7 @@
 
 body {
   font-family: $font-text;
-  font-size: $fs2;
+  font-size: $fs4;
   color: $c-primary;
 
 }
@@ -40,25 +40,37 @@ h1, h2, h3, h4, h5, h6, strong, b {
   margin-top: $gap2;
   border-right-width: $gap2;
   padding-left: $gap13 - 1;
-  font-size: $fs2;
+  font-size: $fs4;
   line-height: 100%;
   display: inline-block;
   background-color: #fff;
-  background-size: contain !important;
+  background-size: contain;
+  &:hover {
+text-decoration: none;
+  }
 }
 a {
   color: $c-primary;
+  cursor: pointer;
+  &:hover {
+    color: $c-secondary;
+  }
+  @include transition;
 }
 article {
-  width: ($gap20 * 5) - 4;
-  padding: $gap7;
+  max-width: ($gap20 * 6) + 2;
+  width: 100%;
+  padding: $gap6;
 }
-p {
+p, footer.footer, ul, ol {
   background-color: #fff;
   padding: $gap2 $gap3;
-  padding-left: 0;
+  padding-left: $gap4;
   margin-top: $gap4;
   border-right: solid 2px $c-secondary;
+}
+ul, ol {
+  margin-left: $gap4;
 }
 .grid {
   height: 100vh;
@@ -68,4 +80,16 @@ p {
   border-left: solid $gap20 white;
   position: fixed;
   z-index: -1;
+}
+
+.links {
+  font-size: $fs3;
+  a {
+text-decoration: underline;
+&:not(:last-of-type) {
+  border-right: solid 1px $c-secondary;
+  padding-right: $gap;
+  margin-right: $gap;
+  }
+}
 }

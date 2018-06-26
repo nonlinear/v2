@@ -1,79 +1,36 @@
 @include font-face(fontawesome-webfont);
+@include font-face(Univers-light-normal);
+@include font-face(UniversLTStd);
 
 
-
-header.header {
-    border-bottom: solid 1px $color-accent;
-    padding-bottom: $gap;
-    a {
-        padding-right: 10px;
-    }
-    h1, h2, h3 {
-        display: inline-block;
-        @include reset(all);
-    }
-    p {
-        @include reset(all);
-        font-size: 12px;
-    }
-}
-footer.footer {
-    border-top: solid 1px $color-accent;
-    padding-top: $gap;
+body {
+  font-family: $font-text;
+  font-size: $fs2;
+  color: $c-primary;
 }
 
-.steps li {
-    font-size: 18px;
-    padding-bottom: 10px;
+h1, h2, h3, h4, h5, h6, strong, b {
+  font-family: $font-title;
 }
 
-a {
-    color: #666;
-    &:hover {
-        color: black;
-        text-decoration: none;
-    }
-}
-.main {
-    padding-bottom: $gap;
-}
-
-.list {
-    a {
-        display: block;
-        @extend h4;
-        img {
-            display: block;
-            padding-top: $gap;
-            width: 100%;
-        }
-    }
+.logo {
+  background-image: url(../images/logo.svg);
+  background-repeat: no-repeat;
+  height: 30px;
+  padding-left: 75px;
+  font-size: $fs2;
+  line-height: 100%;
+  display: inline-block;
+  background-color: #fff;
+  background-size: contain !important;
 }
 
-table {
-  width: 100%;
-  margin: 20px 0;
-  td, th {
-    border-top: solid 1px #eee;
-    padding: 5px;
-    @include transition;
-  }
-  tr {
-    &:last-of-type {
-      td, th {
-        border-bottom: solid 1px #eee;
-      }
-      &:hover {
-        td, th {
-          border-bottom: solid 1px #ccc;
-        }
-      }
-    }
-  }
-}
-.container {
-  max-width: 800px;
-  @media screen and (max-width: 800px) {
-    width: 100%;
-  }
+.grid {
+  height: 100vh;
+  background-image: url(../images/grid.svg);
+  width: 100vw;
+  border: solid 40px white;
+  border-left: solid 150px white;
+  position: fixed;
+  z-index: -1;
 }

@@ -7,7 +7,25 @@ body {
   font-family: $font-text;
   font-size: $fs2;
   color: $c-primary;
+
 }
+
+.guard {
+  height: $gap5;
+position: fixed;
+z-index: 100;
+width: 100%;
+  &.top {
+    top: 0;
+    // refer to https://www.sitepoint.com/building-linear-gradient-mixin-sass/
+    @include linear-gradient(white, rgba(white,0));
+  }
+    &.bottom {
+    bottom: 0;
+    @include linear-gradient(rgba(white,0), white);
+  }
+}
+
 
 h1, h2, h3, h4, h5, h6, strong, b {
   font-family: $font-title;
@@ -16,21 +34,38 @@ h1, h2, h3, h4, h5, h6, strong, b {
 .logo {
   background-image: url(../images/logo.svg);
   background-repeat: no-repeat;
-  height: 30px;
-  padding-left: 75px;
+  height: $gap7;
+  border: solid $gap white;
+  border-left-width: 0;
+  margin-top: $gap2;
+  border-right-width: $gap2;
+  padding-left: $gap13 - 1;
   font-size: $fs2;
   line-height: 100%;
   display: inline-block;
   background-color: #fff;
   background-size: contain !important;
 }
-
+a {
+  color: $c-primary;
+}
+article {
+  width: ($gap20 * 5) - 4;
+  padding: $gap7;
+}
+p {
+  background-color: #fff;
+  padding: $gap2 $gap3;
+  padding-left: 0;
+  margin-top: $gap4;
+  border-right: solid 2px $c-secondary;
+}
 .grid {
   height: 100vh;
   background-image: url(../images/grid.svg);
   width: 100vw;
-  border: solid 40px white;
-  border-left: solid 150px white;
+  border: solid $gap5 white;
+  border-left: solid $gap20 white;
   position: fixed;
   z-index: -1;
 }

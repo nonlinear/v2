@@ -1,6 +1,7 @@
 @include font-face(fontawesome-webfont);
 @include font-face(Univers-light-normal);
 @include font-face(UniversLTStd);
+@include font-face(rakesly-regular);
 
 
 body {
@@ -11,18 +12,16 @@ body {
 }
 
 .guard {
-  height: $gap5;
-position: fixed;
-z-index: 100;
-width: 100%;
+  height: $gap4;
+  width: 100%;
+  @include tile(lines-c, white, 2);
+  position: fixed;
+  z-index: 1000;
   &.top {
     top: 0;
-    // refer to https://www.sitepoint.com/building-linear-gradient-mixin-sass/
-    @include linear-gradient(white, rgba(white,0));
   }
-    &.bottom {
+  &.bottom {
     bottom: 0;
-    @include linear-gradient(rgba(white,0), white);
   }
 }
 
@@ -37,6 +36,7 @@ h1, h2, h3, h4, h5, h6, strong, b {
   height: $gap7;
   border: solid $gap white;
   border-left-width: 0;
+  font-family: $font-brand;
   margin-top: $gap2;
   border-right-width: $gap2;
   padding-left: $gap13 - 1;
@@ -46,7 +46,7 @@ h1, h2, h3, h4, h5, h6, strong, b {
   background-color: #fff;
   background-size: contain;
   &:hover {
-text-decoration: none;
+    text-decoration: none;
   }
 }
 a {
@@ -62,10 +62,15 @@ article {
   width: 100%;
   padding: $gap6;
 }
-p, footer.footer, ul, ol {
+h1 {
+  font-size: $fs13;
+  // text-transform: uppercase;
+  @include reset(all);
+}
+p, footer.footer, ul, ol, .content header {
   background-color: #fff;
   padding: $gap2 $gap3;
-  padding-left: $gap4;
+  padding-left: $gap6 - 3;
   margin-top: $gap4;
   border-right: solid 2px $c-secondary;
 }
@@ -85,11 +90,11 @@ ul, ol {
 .links {
   font-size: $fs3;
   a {
-text-decoration: underline;
-&:not(:last-of-type) {
-  border-right: solid 1px $c-secondary;
-  padding-right: $gap;
-  margin-right: $gap;
+    text-decoration: underline;
+    &:not(:last-of-type) {
+      border-right: solid 1px $c-secondary;
+      padding-right: $gap;
+      margin-right: $gap;
+    }
   }
-}
 }

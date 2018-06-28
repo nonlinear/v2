@@ -78,7 +78,7 @@ ul, ol {
 }
 .grid {
   height: 100vh;
-  background-image: url(../images/grid.svg);
+  @include tile(grid-b, $c-secondary, 12);
   width: 100vw;
   border: solid $gap5 white;
   border-left: solid $gap20 white;

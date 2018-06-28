@@ -1,0 +1,11 @@
+@font-face {
+    font-family: "RakeslyRg-Regular";
+    src: url("rakesly-regular.eot");
+    src: url("rakesly-regular.eot?#iefix") format("embedded-opentype"),
+         url("rakesly-regular.woff2") format("woff2"),
+         url("rakesly-regular.woff") format("woff"),
+         url("rakesly-regular.ttf") format("ttf"),
+         url("rakesly-regular.svg#RakeslyRg-Regular") format("svg");
+    font-style: normal;
+    font-weight: 300;
+}

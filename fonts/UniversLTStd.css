@@ -1,0 +1,11 @@
+@font-face {
+    font-family: "UniversLTStd";
+    src: url("UniversLTStd.eot");
+    src: url("UniversLTStd.eot?#iefix") format("embedded-opentype"),
+         url("UniversLTStd.woff2") format("woff2"),
+         url("UniversLTStd.woff") format("woff"),
+         url("UniversLTStd.ttf") format("ttf"),
+         url("UniversLTStd.svg#UniversLTStd") format("svg");
+    font-style: normal;
+    font-weight: regular;
+}

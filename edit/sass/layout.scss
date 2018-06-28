@@ -7,22 +7,25 @@ body {
   font-family: $font-text;
   font-size: $fs4;
   color: $c-primary;
-
-}
-
-.guard {
-  height: $gap4;
-  width: 100%;
-  @include tile(lines-c, white, 2);
-  position: fixed;
-  z-index: 1000;
-  &.top {
+  padding: $gap6 !important;
+  &:before, &:after {
+    content: "";
+    display: block;
+    height: $gap4;
+    width: 100%;
+    @include tile(lines-c, white, 2);
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+  }
+  &:before {
     top: 0;
   }
-  &.bottom {
+  &:after {
     bottom: 0;
   }
 }
+
 
 
 h1, h2, h3, h4, h5, h6, strong, b {
@@ -36,7 +39,6 @@ h1, h2, h3, h4, h5, h6, strong, b {
   border: solid $gap white;
   border-left-width: 0;
   font-family: $font-brand;
-  margin-top: $gap2;
   border-right-width: $gap2;
   padding-left: $gap13 - 1;
   font-size: $fs4;
@@ -56,33 +58,29 @@ a {
   }
   @include transition;
 }
-article {
-  max-width: ($gap20 * 6) + $gap2 + 2;
-  width: 100%;
-  padding: $gap6;
+
+
+header.header, footer.footer, article.content section {
+  @extend .container;
 }
 h1 {
   font-size: $fs13;
- text-transform: uppercase;
+  text-transform: uppercase;
   @include reset(all);
 }
 p, footer.footer, ul, ol, .content header {
+
+  max-width: ($gap20 * 6) + $gap2 + 2;
   background-color: #fff;
   padding: $gap2 $gap3;
   padding-left: $gap6 - 3;
-  margin-top: $gap4;
+  margin: $gap2 auto;
   border-right: solid 2px $c-secondary;
 }
-ul, ol {
-  margin-left: $gap4;
-}
-.grid {
-  height: 100vh;
+
+article.content section {
   @include tile(grid-b, $c-secondary, 12);
-  width: 100vw;
-  border: solid $gap5 white;
   border-left: solid $gap20 white;
-  position: fixed;
   z-index: -1;
 }
 

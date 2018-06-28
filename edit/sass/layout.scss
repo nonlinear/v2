@@ -3,7 +3,6 @@
 @include font-face(UniversLTStd);
 @include font-face(rakesly-regular);
 
-
 body {
   font-family: $font-text;
   font-size: $fs4;
@@ -58,13 +57,13 @@ a {
   @include transition;
 }
 article {
-  max-width: ($gap20 * 6) + 2;
+  max-width: ($gap20 * 6) + $gap2 + 2;
   width: 100%;
   padding: $gap6;
 }
 h1 {
   font-size: $fs13;
-  // text-transform: uppercase;
+ text-transform: uppercase;
   @include reset(all);
 }
 p, footer.footer, ul, ol, .content header {

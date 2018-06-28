@@ -9,6 +9,7 @@ body {
   color: $c-primary;
   border: solid $gap6 white;
   @include tile(grid-b, $c-secondary, 12);
+  background-attachment: fixed;
   &:before, &:after {
     content: "";
     display: block;
@@ -75,12 +76,24 @@ margin-bottom: $gap4;
   border-right: solid 2px $c-secondary;
 }
 
+
+
+
+
+
+$bd-width: 500px;
+$bd-para: ($gap20 * 5);
+$bd-gap: 75px;
+$bd-overlap: ($bd-width - $bd-gap);
+
+body {
+  border-left-width: $bd-width;
+  }
 header.header, footer.footer, article.content section {
-  width: ($gap20 * 5);
-  margin: $gap4 auto 0 auto;
+    width: $bd-para;
+  margin: $gap4 0 0 0;
+  margin-left: (($bd-width - $bd-overlap) * -1);
 }
-
-
 
 .links {
   font-size: $fs3;

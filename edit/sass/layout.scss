@@ -7,7 +7,8 @@ body {
   font-family: $font-text;
   font-size: $fs4;
   color: $c-primary;
-  padding: $gap6 !important;
+  border: solid $gap6 white;
+  @include tile(grid-b, $c-secondary, 12);
   &:before, &:after {
     content: "";
     display: block;
@@ -60,29 +61,26 @@ a {
 }
 
 
-header.header, footer.footer, article.content section {
-  @extend .container;
-}
+
 h1 {
   font-size: $fs13;
   text-transform: uppercase;
   @include reset(all);
 }
 p, footer.footer, ul, ol, .content header {
-
-  max-width: ($gap20 * 6) + $gap2 + 2;
+margin-bottom: $gap4;
   background-color: #fff;
   padding: $gap2 $gap3;
   padding-left: $gap6 - 3;
-  margin: $gap2 auto;
   border-right: solid 2px $c-secondary;
 }
 
-article.content section {
-  @include tile(grid-b, $c-secondary, 12);
-  border-left: solid $gap20 white;
-  z-index: -1;
+header.header, footer.footer, article.content section {
+  width: ($gap20 * 5);
+  margin: $gap4 auto 0 auto;
 }
+
+
 
 .links {
   font-size: $fs3;
